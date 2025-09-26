@@ -1,5 +1,5 @@
 
-import 'package:student/core/widgets/Models.dart';
+import 'package:student/feature/ui/Screenes/achivment_screen/achivment_Model.dart';
 
 abstract class AchivmentState {}
 
@@ -8,7 +8,7 @@ class AchivmentInitial extends AchivmentState {}
 class AchivmentLoading extends AchivmentState {}
 
 class AchivmentLoaded extends AchivmentState {
-  final List<achivmentModel> achivments;
+  final List<AchivmentModel> achivments;
 
   AchivmentLoaded(this.achivments);
 }

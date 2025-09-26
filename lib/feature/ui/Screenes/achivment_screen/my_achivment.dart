@@ -1,7 +1,9 @@
 
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student/core/api/dio_consumer.dart';
 import 'package:student/core/resource/colors_manager.dart';
 import 'package:student/core/resource/icon_image_manager.dart';
 import 'package:student/core/resource/image_manager.dart';
@@ -11,10 +13,14 @@ import 'package:student/feature/ui/Screenes/achivment_screen/bloc/achivment_even
 import 'package:student/feature/ui/Screenes/achivment_screen/bloc/achivment_states.dart';
 
 class MyAchivment extends StatelessWidget {
+  final String type;
+
+  const MyAchivment({super.key, required this.type});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => AchivmentBloc()..add(LoadAchivments()),
+      create: (_) => AchivmentBloc(DioConsumer(Dio))..add(LoadAchivments()),
       child: Scaffold(
         backgroundColor: ColorManager.successBackgroundLight,
         body: SafeArea(
@@ -48,11 +54,10 @@ class MyAchivment extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Padding(
+                               Padding(
                                 padding: EdgeInsets.only(top: 6, right: 60),
                                 child: Text(
-                                  "\nانجازي\n"
-                                      "قرآن",
+                                  "\nانجازي\n$type",
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                     color: ColorManager.black,
@@ -78,6 +83,12 @@ class MyAchivment extends StatelessWidget {
                         BlocBuilder<AchivmentBloc, AchivmentState>(
                           builder: (context, state) {
                             if (state is AchivmentLoaded) {
+
+
+                              final filteredAchievements = state.achivments
+                                  .where((a) => a.type == type)
+                                  .toList();
+
                               return ListView.separated(
                                 shrinkWrap: true,
                                 physics: NeverScrollableScrollPhysics(),

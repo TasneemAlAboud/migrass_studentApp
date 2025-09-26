@@ -33,7 +33,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
           ),
         );
 
-
+/*
         final data = response.data['circles'] as List;
         final filtered = data
             .where((e) => e['id'].toString() == circleId.toString())
@@ -41,6 +41,17 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
             .toList();
 
         emit(LessonLoaded(filtered));
+        */
+
+
+        final data = response.data['circles'] as List;
+
+        final lessons = data
+            .map((e) => LessonModel.fromJson(e))
+            .toList();
+
+        emit(LessonLoaded(lessons));
+
       } catch (e) {
         emit(LessonError("فشل تحميل الدروس: $e"));
       }

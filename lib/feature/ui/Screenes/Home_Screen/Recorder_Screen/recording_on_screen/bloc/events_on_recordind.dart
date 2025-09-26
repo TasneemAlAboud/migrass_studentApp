@@ -46,4 +46,5 @@ class UploadRecord extends SendRecordEvent {
   @override
   List<Object?> get props => [filePath, surahId, fromAya, toAya];
 }
+class LoadSurahs extends SendRecordEvent {}
 

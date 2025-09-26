@@ -77,6 +77,45 @@ Widget defaultTextFormField({
     );
 
 
+class WaveformWidget extends StatelessWidget {
+  final List<double> waveData;
+  const WaveformWidget({super.key, required this.waveData});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: WaveformPainter(waveData),
+      size: const Size(double.infinity, 50),
+    );
+  }
+}
+
+class WaveformPainter extends CustomPainter {
+  final List<double> waveData;
+  WaveformPainter(this.waveData);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = ColorManager.successText
+      ..strokeWidth = 3
+      ..strokeCap = StrokeCap.round;
+
+    final centerY = size.height / 2;
+    final spacing = size.width / (waveData.isEmpty ? 1 : waveData.length);
+
+    for (int i = 0; i < waveData.length; i++) {
+      final x = i * spacing;
+      final y = waveData[i] * size.height / 2;
+      canvas.drawLine(Offset(x, centerY - y), Offset(x, centerY + y), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant WaveformPainter oldDelegate) =>
+      oldDelegate.waveData != waveData;
+}
+
 
 
 

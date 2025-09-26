@@ -84,12 +84,11 @@ class HomeScrren extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    const Padding(
+                                     Padding(
                                       padding: EdgeInsets.only(
                                           top: 20, right: 50),
                                       child: Text(
-                                        "\nأهلاً بك\n"
-                                            "مؤيد بالله البابا",
+                                        "\nأهلاً بك\n${state.studentFirstName} ${state.studentLastName}",
                                         textAlign: TextAlign.right,
                                         style: TextStyle(
                                           color: ColorManager.black,
@@ -154,7 +153,7 @@ class HomeScrren extends StatelessWidget {
                                               NavigationHelper.navigateTo(
                                                 context,
                                                 const WebViewPage(
-                                                  url: 'http://192.168.1.108:52169/',
+                                                  url: 'https://migrasschallenges.web.app/',
                                                 ),
                                               );
                                             },
@@ -173,17 +172,19 @@ class HomeScrren extends StatelessWidget {
                                   builder: (context, state) {
                                     if (state is HomeLoaded) {
                                       return Column(
-                                        crossAxisAlignment: CrossAxisAlignment
-                                            .end,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
                                         children: [
-                                          const Padding(
-                                            padding: EdgeInsets.only(
-                                                right: 30.0),
-                                            child: Text(
-                                              " دروسي",
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: const Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 30.0),
+                                              child: Text(
+                                                " دروسي",
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -222,14 +223,17 @@ class HomeScrren extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(height: 20),
-                                          const Padding(
-                                            padding: EdgeInsets.only(
-                                                right: 30.0),
-                                            child: Text(
-                                              "انجازي",
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: const Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 30.0),
+                                              child: Text(
+                                                "انجازي",
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -246,8 +250,7 @@ class HomeScrren extends StatelessWidget {
                                                           right: 10),
                                                       child: buildachivmenHomeScreenCard(
                                                           context,
-                                                          state
-                                                              .achievements[index]),
+                                                          state.achievements[index]),
                                                     ),
                                               ),
                                             ),
@@ -279,7 +282,6 @@ class HomeScrren extends StatelessWidget {
                   body: Center(child: Text(state.message)),
                 );
               }
-              return const SizedBox.shrink();
               return const SizedBox.shrink();
             })
     );

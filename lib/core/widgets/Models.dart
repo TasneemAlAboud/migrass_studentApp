@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:student/core/function/function.dart';
 import 'package:student/core/resource/colors_manager.dart';
 import 'package:student/core/resource/image_manager.dart';
+import 'package:student/feature/ui/Screenes/achivment_screen/achivment_Model.dart';
 import 'package:student/feature/ui/Screenes/achivment_screen/my_achivment.dart';
 import 'package:student/feature/ui/Screenes/lessons_screen/my_lesson.dart';
 
@@ -59,10 +60,10 @@ class achivmenHomeScreenModel {
   achivmenHomeScreenModel ({required this.title});
 }
 
-Widget buildachivmenHomeScreenCard (BuildContext context,achivmenHomeScreenModel all_achivmen )=>InkWell(
+Widget buildachivmenHomeScreenCard (BuildContext context,achivmenHomeScreenModel achievement )=>InkWell(
     onTap: () {
       print('تم الضغط!');
-      NavigationHelper.navigateTo(context, MyAchivment());
+      NavigationHelper.navigateTo(context, MyAchivment(type: achievement.title));
     },
     child:   Container(
       width: 140.0,
@@ -86,7 +87,9 @@ Widget buildachivmenHomeScreenCard (BuildContext context,achivmenHomeScreenModel
             height: 70,width: 100,),
           SizedBox(height: 10),
           Text(
-            "${all_achivmen.title}",
+            achievement.title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
@@ -180,13 +183,29 @@ Widget buildLessonCard (LessonModel lessons) => Padding(
     ),
   ),
 );
-
+/*
 class achivmentModel {
   final String date;
   final String doneMyAchivment;
 
   achivmentModel({ required this.date,required this.doneMyAchivment});
+
+
+  factory achivmentModel.fromJson(Map<String, dynamic> json) {
+    return achivmentModel(
+      date: json['date'] ?? '',
+      doneMyAchivment: json['doneMyAchivment'] ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'date': date,
+      'doneMyAchivment': doneMyAchivment,
+    };
+  }
 }
+
 Widget buildachivmentCard (achivmentModel   my_achivment) => Padding(
   padding: const EdgeInsets.only(
       left: 20.0,right: 20.0),
@@ -227,7 +246,8 @@ Widget buildachivmentCard (achivmentModel   my_achivment) => Padding(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${ my_achivment.date}",
+                  //  "${ my_achivment.date}",
+                    my_achivment.date,
                     style: const TextStyle(
                       color:  ColorManager.gray,
                       //    fontWeight: FontWeight.bold,
@@ -243,7 +263,8 @@ Widget buildachivmentCard (achivmentModel   my_achivment) => Padding(
                   ),
                   SizedBox(height: 5.0,),
                   Text(
-                    "${ my_achivment.doneMyAchivment}",
+                   // "${ my_achivment.doneMyAchivment}",
+                    my_achivment.doneMyAchivment,
                     style: const TextStyle(
                       color:  ColorManager.gray,
                       fontWeight: FontWeight.bold,
@@ -255,6 +276,135 @@ Widget buildachivmentCard (achivmentModel   my_achivment) => Padding(
             ),
           ),
        // ),
+      ],
+    ),
+  ),
+);
+*/
+
+/*
+Widget buildachivmentCard(AchivmentModel achivment) => Padding(
+  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+  child: Container(
+    decoration: BoxDecoration(
+      color: ColorManager.white,
+      borderRadius: BorderRadius.circular(16),
+      boxShadow: [
+        BoxShadow(
+          color: ColorManager.gray,
+          blurRadius: 5,
+          offset: const Offset(1, 3),
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        Image.asset(
+          ImageManager().plant,
+          width: 120,
+          height: 120,
+          fit: BoxFit.cover,
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 17.0, right: 20.0, bottom: 17.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${achivment.date} - ${achivment.day}",
+                  style: const TextStyle(
+                    color: ColorManager.gray,
+                    fontSize: 12,
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                const Text(
+                  "إنجازي\nتم التسميع:",
+                  style: TextStyle(
+                    color: ColorManager.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                Text(
+                  "من ${achivment.fromSurahName} آية ${achivment.fromAyah}\n"
+                      "إلى ${achivment.toSurahName} آية ${achivment.toAyah}\n"
+                      "(${achivment.isCounted})",
+                  style: const TextStyle(
+                    color: ColorManager.gray,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  ),
+);
+*/
+
+Widget buildachivmentCard(AchivmentModel achivment) => Padding(
+  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+  child: Container(
+    decoration: BoxDecoration(
+      color: ColorManager.white,
+      borderRadius: BorderRadius.circular(16),
+      boxShadow: [
+        BoxShadow(
+          color: ColorManager.gray,
+          blurRadius: 5,
+          offset: const Offset(1, 3),
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        Image.asset(
+        ImageManager().plant,
+          width: 120,
+          height: 120,
+          fit: BoxFit.cover,
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 17.0, right: 20.0, bottom: 17.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${achivment.date ?? ""} - ${achivment.day ?? ""}",
+                  style: const TextStyle(
+                    color: ColorManager.gray,
+                    fontSize: 12,
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                Text(
+                  "${achivment.type}\nتم التسميع:",
+                  style: const TextStyle(
+                    color: ColorManager.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                Text(
+                  "${achivment.title}\n(${achivment.isCounted})",
+                  style: const TextStyle(
+                    color: ColorManager.gray,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
       ],
     ),
   ),

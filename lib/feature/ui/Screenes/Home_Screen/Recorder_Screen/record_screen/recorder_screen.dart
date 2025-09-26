@@ -1,10 +1,10 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student/core/resource/colors_manager.dart';
 import 'package:student/core/resource/image_manager.dart';
 import 'package:student/core/widgets/green_container.dart';
+
 import 'package:student/feature/ui/Screenes/Home_Screen/Recorder_Screen/record_screen/bloc/bloc_record.dart';
 import 'package:student/feature/ui/Screenes/Home_Screen/Recorder_Screen/record_screen/bloc/events_record.dart';
 import 'package:student/feature/ui/Screenes/Home_Screen/Recorder_Screen/record_screen/bloc/states_record.dart';
@@ -250,7 +250,7 @@ class RecordingScreen extends StatelessWidget {
     );
   }
 }
-
+/*
 class WaveformWidget extends StatelessWidget {
   final List<double> waveData;
   const WaveformWidget({super.key, required this.waveData});
@@ -289,3 +289,4 @@ class WaveformPainter extends CustomPainter {
   bool shouldRepaint(covariant WaveformPainter oldDelegate) =>
       oldDelegate.waveData != waveData;
 }
+*/

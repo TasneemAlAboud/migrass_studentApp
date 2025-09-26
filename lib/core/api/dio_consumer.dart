@@ -6,9 +6,9 @@ import 'package:student/core/error/handle_dio_error.dart';
 class DioConsumer implements ApiConsumer {
   final Dio dio = Dio(
     BaseOptions(
-     //  baseUrl: "https://api.devscape.online",
-      baseUrl: "http://192.168.1.103:4000",
-    //  baseUrl: "http://localhost:4000",
+      baseUrl: "https://api.devscape.online",
+     // baseUrl: "http://192.168.80.1",
+   //  baseUrl: "http://192.168.1.105:4000",
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
     ),
