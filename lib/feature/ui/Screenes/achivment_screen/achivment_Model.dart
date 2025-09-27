@@ -1,37 +1,4 @@
-/*
-class AchivmentModel {
-  final String date;
-  final String day;
-  final String fromSurahName;
-  final int fromAyah;
-  final String toSurahName;
-  final int toAyah;
-  final String isCounted;
 
-  AchivmentModel({
-    required this.date,
-    required this.day,
-    required this.fromSurahName,
-    required this.fromAyah,
-    required this.toSurahName,
-    required this.toAyah,
-    required this.isCounted,
-  });
-
-
-  factory AchivmentModel.fromJson(Map<String, dynamic> json) {
-    return AchivmentModel(
-      date: json['date'] ?? '',
-      day: json['day'] ?? '',
-      fromSurahName: json['fromSurahName'] ?? '',
-      fromAyah: json['fromAyah'] ?? 0,
-      toSurahName: json['toSurahName'] ?? '',
-      toAyah: json['toAyah'] ?? 0,
-      isCounted: json['is_counted'] ?? '',
-    );
-  }
-}
-*/
 
 class AchivmentModel {
   final String date;

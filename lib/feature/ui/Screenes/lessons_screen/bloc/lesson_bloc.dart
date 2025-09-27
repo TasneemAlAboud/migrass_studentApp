@@ -33,15 +33,6 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
           ),
         );
 
-/*
-        final data = response.data['circles'] as List;
-        final filtered = data
-            .where((e) => e['id'].toString() == circleId.toString())
-            .map((e) => LessonModel.fromJson(e))
-            .toList();
-
-        emit(LessonLoaded(filtered));
-        */
 
 
         final data = response.data['circles'] as List;
